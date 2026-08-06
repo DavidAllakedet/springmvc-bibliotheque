@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <definition name="baseLayout" template="/WEB-INF/jsp/baseLayout.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="header" value="/WEB-INF/jsp/header.jsp"/>
+        <put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp"/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp"/>
+    </definition>
+
+    <definition name="index" extends="baseLayout">
+        <put-attribute name="title" value="Accueil - Bibliotheque"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/pages/index.jsp"/>
+    </definition>
+
+    <definition name="livres" extends="baseLayout">
+        <put-attribute name="title" value="Liste des Livres"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/pages/livres.jsp"/>
+    </definition>
+
+    <definition name="add-livre" extends="baseLayout">
+        <put-attribute name="title" value="Ajouter un Livre"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/pages/add-livre.jsp"/>
+    </definition>
+
+    <definition name="auteurs" extends="baseLayout">
+        <put-attribute name="title" value="Liste des Auteurs"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/pages/auteurs.jsp"/>
+    </definition>
+
+    <definition name="add-auteur" extends="baseLayout">
+        <put-attribute name="title" value="Ajouter un Auteur"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/pages/add-auteur.jsp"/>
+    </definition>
+
+    <definition name="emprunts" extends="baseLayout">
+        <put-attribute name="title" value="Liste des Emprunts"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/pages/emprunts.jsp"/>
+    </definition>
+
+    <definition name="add-emprunt" extends="baseLayout">
+        <put-attribute name="title" value="Nouvel Emprunt"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/pages/add-emprunt.jsp"/>
+    </definition>
+
+</tiles-definitions>
