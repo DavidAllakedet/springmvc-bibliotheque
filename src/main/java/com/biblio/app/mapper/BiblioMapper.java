@@ -63,7 +63,8 @@ public class BiblioMapper {
         if (d == null) return null;
         EmpruntEntity e = new EmpruntEntity();
         e.setId(d.getId()); e.setLivre(livre); e.setNomEmprunteur(d.getNomEmprunteur());
-        e.setDateEmprunt(d.getDateEmprunt()); e.setDateRetour(d.getDateRetour());
+        if (d.getDateEmprunt() != null) e.setDateEmprunt(d.getDateEmprunt());
+        if (d.getDateRetour() != null) e.setDateRetour(d.getDateRetour());
         if (d.getStatut() != null) e.setStatut(EmpruntEntity.StatutEmprunt.valueOf(d.getStatut()));
         return e;
     }

@@ -1,17 +1,31 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:if test="${not empty titreError}">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i> ${titreError}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+</c:if>
+<c:if test="${not empty auteurError}">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i> ${auteurError}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+</c:if>
+
 <h2 class="page-title"><i class="bi bi-plus-circle"></i> Ajouter / Modifier un Livre</h2>
 <div class="card shadow-sm">
     <div class="card-body">
         <form action="${pageContext.request.contextPath}/livres/${livre.id != null ? 'update' : 'save'}" method="post">
             <c:if test="${livre.id != null}"><input type="hidden" name="id" value="${livre.id}"/></c:if>
-            <div class="mb-3"><label class="form-label">Titre *</label><input type="text" class="form-control" name="titre" value="${livre.titre}" required></div>
+            <div class="mb-3"><label class="form-label">Titre *</label><input type="text" class="form-control" name="titre" value="${livre.titre}" required maxlength="200"></div>
             <div class="row">
-                <div class="col-md-6 mb-3"><label class="form-label">ISBN</label><input type="text" class="form-control" name="isbn" value="${livre.isbn}"></div>
-                <div class="col-md-6 mb-3"><label class="form-label">Categorie</label><input type="text" class="form-control" name="categorie" value="${livre.categorie}"></div>
+                <div class="col-md-6 mb-3"><label class="form-label">ISBN</label><input type="text" class="form-control" name="isbn" value="${livre.isbn}" maxlength="20"></div>
+                <div class="col-md-6 mb-3"><label class="form-label">Categorie</label><input type="text" class="form-control" name="categorie" value="${livre.categorie}" maxlength="100"></div>
             </div>
             <div class="row">
-                <div class="col-md-6 mb-3"><label class="form-label">Quantite</label><input type="number" class="form-control" name="quantite" value="${livre.quantite != null ? livre.quantite : 1}"></div>
+                <div class="col-md-6 mb-3"><label class="form-label">Quantite</label><input type="number" class="form-control" name="quantite" value="${livre.quantite != null ? livre.quantite : 1}" min="1"></div>
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Auteur *</label>
                     <select class="form-select" name="auteurId" required>

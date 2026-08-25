@@ -1,5 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:if test="${not empty emprunteurError}">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i> ${emprunteurError}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+</c:if>
+<c:if test="${not empty livreError}">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i> ${livreError}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+</c:if>
+
 <h2 class="page-title"><i class="bi bi-plus-circle"></i> Nouvel Emprunt</h2>
 <div class="card shadow-sm">
     <div class="card-body">
@@ -13,7 +27,7 @@
                     </c:forEach>
                 </select>
             </div>
-            <div class="mb-3"><label class="form-label">Nom de l'emprunteur *</label><input type="text" class="form-control" name="nomEmprunteur" required></div>
+            <div class="mb-3"><label class="form-label">Nom de l'emprunteur *</label><input type="text" class="form-control" name="nomEmprunteur" required maxlength="200"></div>
             <div class="row">
                 <div class="col-md-6 mb-3"><label class="form-label">Date emprunt *</label><input type="date" class="form-control" name="dateEmprunt" required></div>
                 <div class="col-md-6 mb-3"><label class="form-label">Date retour</label><input type="date" class="form-control" name="dateRetour"></div>
